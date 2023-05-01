@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Dchess</title>
+	<link rel="icon" href="dchess-icon.png" type="image/x-icon">
+	<link rel="stylesheet" type="text/css" href="style.css" media="screen" />
+	<meta name="viewport" charset="utf-8" content="width=device-width, initial-scale=1.0" />
+</head>
+<style>
+	canvas {
+		/* FIXME: non-zero border introduces offset in cursor position on chess board*/
+		border: 0px solid #202020;
+		background-color: hsl(0, 0%, 0%);
+		display: inline;
+	}
+</style>
+
+<body id="game-canvas">
+	<script src="wasm.js"></script>
+	<script src="chess.js"></script>
+	<div id="maindiv" style="padding: 0px; text-align: center">
+		<p>
+			<input type="text" placeholder="FEN" id="FEN-input" name="FEN" value="---"
+				style="width: 700px; text-align: left; border-radius: 4px">
+			<button id="send-fen"">Set FEN</button>
+	</p>
+
+	<p>
+		<textarea placeholder=" PGN" id="PGN-input" name="PGN"
+				style="width: 700px; height: 300px; text-align: left; resize: vertical; border-radius: 4px"></textarea>
+				<button id="send-pgn">Set PGN</button>
+		</p>
+		<div>
+			<label for="ai-depth">AI depth</label>
+			<input type="range" min="1" max="10" value="6" class="slider" id="ai-depth"
+				oninput="updateSlider(this.value)">
+			<div id="ai-depth-name">6</div>
+		</div>
+
+		<button id="but-reset">Reset game</button>
+		<label class="switch">
+			<input id="but-arrows" type="checkbox">
+			<span>Show arrows</span>
+		</label>
+		<!--<p><a href="https://www.github.com/dkorpel/dchess">
+		Github
+		<img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/dkorpel/tictac?style=social">
+	</a></p>-->
+	</div>
+</body>
+
+</html>
